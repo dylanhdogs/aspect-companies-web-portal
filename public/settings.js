@@ -44,6 +44,12 @@
     }catch(error){status.textContent=error.message;showToast(error.message,'error');}
     finally{input.disabled=false;save.disabled=false;reset.disabled=!state.settingsMeta?.calendarSenderOverride;}
   }
+  async function testCalendarEmail(){
+    const button=$('#testCalendarEmail'),status=$('#calendarSenderState');if(!button||!status)return;button.disabled=true;status.textContent='Sending a test email to your profile address…';
+    try{const result=await api('/api/settings/calendar-email-test',{method:'POST',body:'{}'});status.textContent=result.message;showToast(result.message);}
+    catch(error){status.textContent=error.message;showToast(error.message,'error');}
+    finally{button.disabled=false;}
+  }
   function applySettingsResult(result){state.settings=Object.fromEntries(Object.entries(result).filter(([name])=>name!=='meta'));state.settingsMeta=result.meta||{};}
   async function saveReminderTiming(){
     const select=$('#calendarReminderMinutes'),save=$('#saveCalendarReminderMinutes'),status=$('#calendarReminderState');if(!select||!save||!status)return;
@@ -88,6 +94,7 @@
     $('#settingsPanelBasic').innerHTML=renderToggleCategory('basic');
     $('#settingsPanelAdvanced').innerHTML=renderToggleCategory('advanced');
     $('#settingsPanelOther').innerHTML=renderOther();
+    const senderActions=$('#calendarSenderForm .calendar-sender-actions');if(senderActions&&!$('#testCalendarEmail')){const testButton=document.createElement('button');testButton.type='button';testButton.className='button button-secondary';testButton.id='testCalendarEmail';testButton.textContent='Send test email';senderActions.append(testButton);}
     applyCategory(activeCategory);
   };
   $('#settingsTabs').addEventListener('click',event=>{const tab=event.target.closest('[data-settings-tab]');if(tab)applyCategory(tab.dataset.settingsTab);});
@@ -105,6 +112,7 @@
   });
   document.addEventListener('submit',event=>{if(event.target.id==='calendarSenderForm'){event.preventDefault();const input=$('#calendarSenderEmail');if(input?.reportValidity())saveCalendarSender(input.value.trim());}else if(event.target.id==='calendarReminderForm'){event.preventDefault();saveReminderTiming();}else if(event.target.id==='slackCalendarForm'){event.preventDefault();saveSlackConnection();}});
   document.addEventListener('click',event=>{if(event.target.closest('#resetCalendarSenderEmail'))saveCalendarSender('');});
+  document.addEventListener('click',event=>{if(event.target.closest('#testCalendarEmail'))testCalendarEmail();});
   document.addEventListener('click',event=>{if(event.target.closest('#testSlackCalendar'))testSlackConnection();else if(event.target.closest('#disconnectSlackCalendar'))disconnectSlackConnection();});
   document.addEventListener('click',event=>{
     const action=event.target.closest('[data-settings-action]')?.dataset.settingsAction;if(!action)return;
