@@ -6,7 +6,7 @@ This deployment bundle targets a Linux VPS running systemd, Nginx, and Node.js 2
 
 Use this path when the VPS is managed through Docker Manager. It adds a separate `aspect-portal` Compose project with its own persistent Docker volume; it does not replace or edit existing projects such as `n8n` or `webapp`. The app is reachable through Traefik over HTTPS and does not publish its application port directly to the internet. You do not need to buy a domain: Hostinger can provide a temporary hostname for a Docker app and Traefik can secure it with HTTPS. Hostinger describes this automatic hostname and SSL flow in its [Docker app SSL guide](https://www.hostinger.com/support/how-to-add-ssl-to-openclaw-on-hostinger/).
 
-For the VPS shown in this project, `aspect-portal.srv1633240.hstgr.cloud` is a candidate dedicated hostname; its DNS currently resolves to the VPS. Set `ASPECT_PORTAL_DOMAIN` to that hostname below. The secure route will be active only after Traefik is running and the certificate has been issued.
+For the VPS shown in this project, `aspect-portal.srv1633240.hstgr.cloud` is the default dedicated hostname and resolves to the VPS. The Compose file uses it when `ASPECT_PORTAL_DOMAIN` is omitted, so Hostinger Docker Manager can deploy without a separate project `.env` just to satisfy Compose interpolation. If you use a different dedicated hostname, set `ASPECT_PORTAL_DOMAIN` in the Docker Manager project environment. The secure route will be active only after Traefik is running and the certificate has been issued.
 
 Before deploying, choose a dedicated hostname that resolves to this VPS. It can be a custom domain or a Hostinger-assigned hostname if that hostname supports the required DNS routing. A direct IP address is not a valid Traefik `Host()` rule. Do not reuse the hostname already assigned to another application.
 
@@ -36,7 +36,7 @@ The current `n8n` project on this VPS already includes a Traefik container bound
 
    ```bash
    cd /opt/aspect-portal
-   sudo sh -c 'umask 077; printf "ASPECT_PORTAL_DOMAIN=%s\\nASPECT_SETUP_TOKEN=%s\\nSIGNATURE_DESIGN_INTEGRATION_ENABLED=false\\nSIGNATURE_DESIGN_HMAC_KEY_ID=\\nSIGNATURE_DESIGN_HMAC_SECRET=\\n" "aspect-portal.srv1633240.hstgr.cloud" "$(openssl rand -hex 32)" > /opt/aspect-portal/.env'
+   sudo sh -c 'umask 077; printf "ASPECT_SETUP_TOKEN=%s\\nSIGNATURE_DESIGN_INTEGRATION_ENABLED=false\\nSIGNATURE_DESIGN_HMAC_KEY_ID=\\nSIGNATURE_DESIGN_HMAC_SECRET=\\n" "$(openssl rand -hex 32)" > /opt/aspect-portal/.env'
    sudo chown root:root /opt/aspect-portal/.env
    sudo chmod 0600 /opt/aspect-portal/.env
    ```

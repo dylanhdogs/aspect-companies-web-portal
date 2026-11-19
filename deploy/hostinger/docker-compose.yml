@@ -38,7 +38,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=n8n_default
-      - traefik.http.routers.aspect-portal.rule=Host(`${ASPECT_PORTAL_DOMAIN:?Set ASPECT_PORTAL_DOMAIN in the project .env file}`)
+      - traefik.http.routers.aspect-portal.rule=Host(`${ASPECT_PORTAL_DOMAIN:-aspect-portal.srv1633240.hstgr.cloud}`)
       - traefik.http.routers.aspect-portal.entrypoints=websecure
       - traefik.http.routers.aspect-portal.tls=true
       - traefik.http.routers.aspect-portal.tls.certresolver=mytlschallenge
