@@ -13,7 +13,7 @@
       {key:'clientImports',title:'Client spreadsheet imports',description:'Allow portal administrators to preview and import client spreadsheets.'},
       {key:'meetingPdfPreview',title:'Project PDF preview',description:'Allow inline previews of PDFs shared in projects. Downloads remain available.'},
       {key:'calendarEmails',title:'External calendar invitations',description:'Send email invitations and updates to external guests when server email is configured.'},
-      {key:'calendarReminders',title:'Upcoming event reminders',description:'Email each event owner at the address saved on their profile before timed events begin.'},
+      {key:'calendarReminders',title:'Upcoming event reminders',description:'Email event owners and connected internal attendees at their profile addresses before timed events begin.'},
       {key:'calendarSlackReminders',title:'Slack calendar reminders',description:'Post upcoming event reminders to the connected Slack channel.'},
       {key:'documentUploads',title:'Document uploads',description:'Allow new documents to be uploaded to companies and projects.'}
     ]
@@ -94,6 +94,10 @@
     $('#settingsPanelBasic').innerHTML=renderToggleCategory('basic');
     $('#settingsPanelAdvanced').innerHTML=renderToggleCategory('advanced');
     $('#settingsPanelOther').innerHTML=renderOther();
+    const reminderNote=[...$('#settingsPanelOther').querySelectorAll('.settings-data-note')].find(note=>note.textContent.includes('Personal reminders stay personal.'));
+    if(reminderNote){const heading=reminderNote.querySelector('strong'),copy=reminderNote.querySelector('p');if(heading)heading.textContent='Reminders go to event participants.';if(copy)copy.textContent='Event owners and connected internal attendees receive email at their profile address. Declined attendees are skipped. Slack receives one shared channel message.';}
+    const reminderIntro=$('#settingsPanelOther .calendar-reminder-card .settings-card-heading p');if(reminderIntro)reminderIntro.textContent='Choose how early event owners and connected internal attendees receive email reminders.';
+    const reminderTimingCopy=$('#calendarReminderForm .calendar-sender-state');if(reminderTimingCopy)reminderTimingCopy.textContent='Sent to the owner and connected internal attendees at their profile email addresses.';
     const senderActions=$('#calendarSenderForm .calendar-sender-actions');if(senderActions&&!$('#testCalendarEmail')){const testButton=document.createElement('button');testButton.type='button';testButton.className='button button-secondary';testButton.id='testCalendarEmail';testButton.textContent='Send test email';senderActions.append(testButton);}
     applyCategory(activeCategory);
   };
