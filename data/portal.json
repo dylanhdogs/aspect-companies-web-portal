@@ -1,0 +1,92 @@
+{
+  "companies": [
+    {
+      "id": "aspect-holdings",
+      "name": "Aspect Holdings",
+      "legalName": "Aspect Holdings, Inc.",
+      "type": "Holding company",
+      "status": "Active",
+      "industry": "Management",
+      "location": "New York, NY",
+      "employees": 12,
+      "owner": "Maya Bennett",
+      "updatedAt": "2026-09-28T14:30:00.000Z",
+      "description": "Parent company overseeing the Aspect Companies portfolio."
+    },
+    {
+      "id": "aspect-property",
+      "name": "Aspect Property Group",
+      "legalName": "Aspect Property Group, LLC",
+      "type": "Real estate",
+      "status": "Active",
+      "industry": "Real estate",
+      "location": "New York, NY",
+      "employees": 24,
+      "owner": "Jordan Lee",
+      "updatedAt": "2026-09-27T10:15:00.000Z",
+      "description": "Property acquisition, management, and development."
+    },
+    {
+      "id": "aspect-ventures",
+      "name": "Aspect Ventures",
+      "legalName": "Aspect Ventures, LLC",
+      "type": "Investment",
+      "status": "Active",
+      "industry": "Investment",
+      "location": "Brooklyn, NY",
+      "employees": 8,
+      "owner": "Sam Rivera",
+      "updatedAt": "2026-09-26T16:00:00.000Z",
+      "description": "Investment and venture development across the group."
+    },
+    {
+      "id": "aspect-operations",
+      "name": "Aspect Operations",
+      "legalName": "Aspect Operations, Inc.",
+      "type": "Shared services",
+      "status": "Active",
+      "industry": "Business services",
+      "location": "New York, NY",
+      "employees": 31,
+      "owner": "Taylor Morgan",
+      "updatedAt": "2026-09-25T09:40:00.000Z",
+      "description": "Centralized operational support for portfolio companies."
+    },
+    {
+      "id": "aspect-logistics",
+      "name": "Aspect Logistics",
+      "legalName": "Aspect Logistics, LLC",
+      "type": "Operating company",
+      "status": "In setup",
+      "industry": "Logistics",
+      "location": "Newark, NJ",
+      "employees": 0,
+      "owner": "Alex Chen",
+      "updatedAt": "2026-09-24T13:20:00.000Z",
+      "description": "A new operating company currently being prepared for launch."
+    }
+  ],
+  "activities": [
+    {
+      "id": "74a6beaf-c24f-4133-984c-5fd723571c34",
+      "title": "Aspect Logistics added to the portfolio",
+      "detail": "Company profile created by Maya Bennett",
+      "time": "2026-09-24T13:20:00.000Z",
+      "kind": "company"
+    },
+    {
+      "id": "8d14f82b-733a-45c8-be21-ddfc25ffb68c",
+      "title": "Aspect Operations profile updated",
+      "detail": "Business details reviewed by Taylor Morgan",
+      "time": "2026-09-23T09:40:00.000Z",
+      "kind": "update"
+    },
+    {
+      "id": "a138474e-842a-4454-bdaf-9e4e09f8ed9f",
+      "title": "Portfolio workspace initialized",
+      "detail": "Aspect Holdings portal is ready for setup",
+      "time": "2026-09-22T15:00:00.000Z",
+      "kind": "system"
+    }
+  ]
+}

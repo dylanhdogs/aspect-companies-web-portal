@@ -1,0 +1,34 @@
+[Unit]
+Description=Aspect Companies Portal
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=aspectportal
+Group=aspectportal
+WorkingDirectory=/opt/aspect-portal
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=ASPECT_DATA_DIR=/var/lib/aspect-portal
+Environment=ASPECT_TRUST_PROXY=1
+EnvironmentFile=-/etc/aspect-portal.env
+ExecStart=__NODE_PATH__ /opt/aspect-portal/server.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=35
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/var/lib/aspect-portal
+
+[Install]
+WantedBy=multi-user.target

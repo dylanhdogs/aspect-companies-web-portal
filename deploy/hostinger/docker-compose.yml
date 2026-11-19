@@ -1,0 +1,57 @@
+services:
+  aspect-portal:
+    image: aspect-portal:${ASPECT_PORTAL_RELEASE_ID:-latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    stop_grace_period: 40s
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 3000
+      ASPECT_DATA_DIR: /data
+      ASPECT_TRUST_PROXY: "1"
+      PORTAL_LIVE_UPDATES: ${PORTAL_LIVE_UPDATES:-true}
+      ASPECT_SETUP_TOKEN: ${ASPECT_SETUP_TOKEN:-}
+      SIGNATURE_DESIGN_INTEGRATION_ENABLED: ${SIGNATURE_DESIGN_INTEGRATION_ENABLED:-false}
+      SIGNATURE_DESIGN_WRITEBACK_ENABLED: ${SIGNATURE_DESIGN_WRITEBACK_ENABLED:-false}
+      SIGNATURE_DESIGN_WRITEBACK_BASE_URL: ${SIGNATURE_DESIGN_WRITEBACK_BASE_URL:-}
+      SIGNATURE_DESIGN_HMAC_KEY_ID: ${SIGNATURE_DESIGN_HMAC_KEY_ID:-}
+      SIGNATURE_DESIGN_HMAC_SECRET: ${SIGNATURE_DESIGN_HMAC_SECRET:-}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_SECURE: ${SMTP_SECURE:-false}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM: ${SMTP_FROM:-}
+      PORTAL_PUBLIC_URL: ${PORTAL_PUBLIC_URL:-}
+    volumes:
+      - aspect-portal-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp:mode=1777,size=16m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=n8n_default
+      - traefik.http.routers.aspect-portal.rule=Host(`${ASPECT_PORTAL_DOMAIN:?Set ASPECT_PORTAL_DOMAIN in the project .env file}`)
+      - traefik.http.routers.aspect-portal.entrypoints=websecure
+      - traefik.http.routers.aspect-portal.tls=true
+      - traefik.http.routers.aspect-portal.tls.certresolver=mytlschallenge
+      - traefik.http.routers.aspect-portal.service=aspect-portal
+      - traefik.http.services.aspect-portal.loadbalancer.server.port=3000
+    networks:
+      - n8n_default
+
+volumes:
+  aspect-portal-data:
+    name: aspect-portal-data
+
+networks:
+  n8n_default:
+    external: true
+    name: n8n_default
