@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f7f4e9"><meta name="description" content="Aspect Companies portfolio portal">
-  <title>Overview · Aspect Companies</title><link rel="stylesheet" href="/styles.css?v=20261119-calendar-sender-setting-1">
+  <title>Overview · Aspect Companies</title><link rel="stylesheet" href="/styles.css?v=20261119-portal-settings-readable-1">
 </head>
 <body>
   <div class="app-shell" id="appShell" hidden>
@@ -130,10 +130,10 @@
           </section>
         </section>
         <section class="portal-settings-view" id="settingsView" hidden aria-label="Portal settings">
-          <div class="settings-save-row"><span class="settings-save-state" id="settingsSaveState" role="status" aria-live="polite">Changes save as you make them</span></div>
+          <header class="portal-settings-heading"><div><span class="eyebrow">ADMINISTRATION</span><h1>Portal settings</h1><p>Manage workspace sections, optional features, and calendar tools.</p></div><span class="settings-save-state" id="settingsSaveState" role="status" aria-live="polite">Feature changes save automatically</span></header>
           <nav class="settings-tabs" id="settingsTabs" role="tablist" aria-label="Settings categories">
-            <button type="button" role="tab" id="settingsTabBasic" aria-selected="true" aria-controls="settingsPanelBasic" data-settings-tab="basic">Basic</button>
-            <button type="button" role="tab" id="settingsTabAdvanced" aria-selected="false" aria-controls="settingsPanelAdvanced" data-settings-tab="advanced" tabindex="-1">Advanced</button>
+            <button type="button" role="tab" id="settingsTabBasic" aria-selected="true" aria-controls="settingsPanelBasic" data-settings-tab="basic">Workspace</button>
+            <button type="button" role="tab" id="settingsTabAdvanced" aria-selected="false" aria-controls="settingsPanelAdvanced" data-settings-tab="advanced" tabindex="-1">Features</button>
             <button type="button" role="tab" id="settingsTabOther" aria-selected="false" aria-controls="settingsPanelOther" data-settings-tab="other" tabindex="-1">Admin</button>
           </nav>
           <div class="settings-panel" id="settingsPanelBasic" role="tabpanel" aria-labelledby="settingsTabBasic" data-settings-panel="basic"></div>
@@ -334,7 +334,7 @@
   <script src="/project-document-upload.js?v=20261013-upload-context-1" defer></script>
   <script src="/system-development.js?v=20261014-team-project-archive-1" defer></script>
   <script src="/calendar.js?v=20261016-calendar-event-info-icons-1" defer></script>
-  <script src="/settings.js?v=20261119-calendar-sender-setting-1" defer></script>
+  <script src="/settings.js?v=20261119-portal-settings-readable-1" defer></script>
   <div class="modal-backdrop profile-unsaved-backdrop" id="profileUnsavedBackdrop" hidden><section class="modal profile-unsaved-modal" role="alertdialog" aria-modal="true" aria-labelledby="profileUnsavedTitle" aria-describedby="profileUnsavedCopy"><span class="eyebrow">UNSAVED CHANGES</span><h2 id="profileUnsavedTitle">Save your profile before leaving?</h2><p id="profileUnsavedCopy">You have changes that haven’t been saved yet.</p><div class="profile-unsaved-actions"><button type="button" class="button button-secondary" id="profileStay">Keep editing</button><button type="button" class="button button-secondary" id="profileDiscard">Leave without saving</button><button type="button" class="button button-primary" id="profileSaveAndLeave">Save and leave</button></div></section></div>
 </body></html>
 

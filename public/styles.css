@@ -398,7 +398,6 @@ body.intake-modal-open .page-wrap>section:not([hidden]){animation:none!important
  .intake-row-followup{grid-template-columns:minmax(100px,.8fr) minmax(0,1.5fr) auto;align-items:center;gap:8px}
 }
 
-
 @media(max-width:560px){
  .central-intake-panel{padding:15px}.intake-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.intake-reminder{align-items:flex-start;flex-wrap:wrap}.intake-reminder>span:nth-child(2){min-width:calc(100% - 48px)}.intake-reminder .text-button{margin-left:44px}.intake-toolbar{grid-template-columns:1fr}.intake-search{grid-column:auto}.intake-queue-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.intake-closure-fields{grid-template-columns:1fr}.intake-log-contact form{grid-template-columns:1fr}.intake-row-actions{flex-basis:100%;justify-content:flex-start}
  .intake-modal-backdrop{padding:8px}
@@ -3432,3 +3431,62 @@ body:is(.authenticated,.company-portal-mode) .company-client-searchbar .clients-
   body:is(.authenticated,.company-portal-mode) .page-wrap>.page-heading .heading-actions{width:100%;flex-wrap:wrap}
   body:is(.authenticated,.company-portal-mode) .company-client-searchbar{max-width:none}
 }
+
+/* Portal settings: clear grouping and readable contrast */
+.portal-settings-view{gap:18px;color:#292923}
+.portal-settings-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:20px 22px;border:1px solid #e5decd;border-radius:16px;background:#fffefa}
+.portal-settings-heading h1{margin:5px 0 5px;color:#292923;font:700 28px/1.2 Manrope,Arial,sans-serif;letter-spacing:-.5px}
+.portal-settings-heading p{margin:0;color:#5d5b52;font-size:15px;line-height:1.5}
+.portal-settings-heading .eyebrow{color:#806621;font-size:11px;font-weight:750;letter-spacing:.12em}
+.settings-save-state{color:#514f46;font-size:13px;font-weight:600}
+.settings-save-state:before{width:9px;height:9px;flex:none;background:#8c9b67}
+.settings-tabs{width:max-content;max-width:100%;gap:5px;padding:5px;border:1px solid #e1dac9;border-radius:13px;background:#f7f4eb}
+.settings-tabs button{min-width:112px;padding:11px 18px;border:0;border-radius:9px;color:#514f46;font-size:15px;font-weight:650;white-space:nowrap}
+.settings-tabs button:after{display:none}
+.settings-tabs button[aria-selected="true"]{background:#292923;color:#fffdf5;box-shadow:0 2px 5px #29292320}
+.settings-tabs button:focus-visible{outline:3px solid #b89d4a;outline-offset:2px}
+.settings-panel{gap:18px}
+.portal-settings-card,.settings-operational-card{border-color:#e3ddcf;border-radius:16px;background:#fffefa;box-shadow:0 4px 14px #3e39290a}
+.settings-card-heading{padding:20px 22px 17px}
+.settings-card-heading h2,.settings-card-heading h3{margin:0 0 6px;color:#292923;font:700 18px/1.35 Manrope,Arial,sans-serif;letter-spacing:-.2px}
+.settings-card-heading p{color:#5d5b52;font-size:14px;line-height:1.55}
+.portal-setting-list{padding:0 22px}
+.portal-setting-row{grid-template-columns:minmax(0,1fr) 44px 42px;gap:16px;min-height:76px;border-color:#e9e4d9}
+.portal-setting-copy strong{color:#302f29;font-size:15px;line-height:1.4}
+.portal-setting-copy small{max-width:820px;color:#5e5c53;font-size:13px;line-height:1.5}
+.portal-setting-control{width:42px;height:24px}
+.portal-setting-control input{width:42px;height:24px}
+.portal-setting-track{width:42px;height:24px}
+.portal-setting-track:after{top:4px;width:14px;height:14px}
+.portal-setting-control input:checked+.portal-setting-track:after{transform:translateX(18px)}
+.portal-setting-status{min-width:38px;color:#4e4c43;font-size:13px}
+.settings-admin-layout{display:grid;gap:24px}
+.settings-group{display:grid;gap:13px;min-width:0}
+.settings-group-heading{display:flex;align-items:flex-end;justify-content:space-between;padding:0 2px 2px}
+.settings-group-heading .eyebrow{color:#806621;font-size:11px;font-weight:750;letter-spacing:.12em}
+.settings-group-heading h2{margin:5px 0;color:#292923;font:700 22px/1.3 Manrope,Arial,sans-serif;letter-spacing:-.3px}
+.settings-group-heading p{margin:0;color:#5d5b52;font-size:14px;line-height:1.5}
+.settings-calendar-grid,.settings-other-grid{gap:16px}
+.slack-calendar-card{grid-column:1/-1}
+.calendar-sender-form,.calendar-reminder-form,.slack-calendar-form{gap:14px 18px;padding-right:22px;padding-left:22px}
+.calendar-sender-form .form-field,.calendar-reminder-form .form-field,.slack-calendar-form .form-field{gap:8px;color:#3e3c34;font-size:14px;font-weight:650}
+.calendar-sender-form input,.calendar-reminder-form select,.slack-calendar-form input{min-height:48px;padding:0 14px;border-color:#d8d1c2;background:#fff;color:#292923;font-size:15px}
+.calendar-sender-form input::placeholder,.slack-calendar-form input::placeholder{color:#747168;opacity:1}
+.calendar-sender-form .form-field small,.calendar-reminder-form .form-field small,.slack-calendar-form .form-field small{color:#59574e;font-size:13px;line-height:1.5}
+.calendar-sender-actions{gap:10px}
+.calendar-sender-actions .button,.calendar-reminder-form .button{min-height:46px;font-size:14px}
+.calendar-sender-state{color:#55534a;font-size:13px;line-height:1.55}
+.settings-data-note{gap:13px;padding:17px 20px;border-color:#e4ddca;background:#f8f5eb}
+.settings-note-mark{width:23px;height:23px;background:#efe5c3;color:#70591e;font-size:13px}
+.settings-data-note strong{margin:1px 0 5px;color:#302f29;font-size:14px}
+.settings-data-note p{color:#55534a;font-size:13px;line-height:1.55}
+.settings-connection-badge{padding:7px 10px;color:#514f46;font-size:11px}
+.settings-connection-badge.ready{color:#40563b}
+.settings-tool-links{gap:10px;padding:0 22px}
+.settings-tool-links .button{min-height:44px;font-size:14px}
+.settings-facts{margin-right:22px;margin-left:22px}
+.settings-facts>div{min-height:42px;gap:16px;border-color:#e9e4d9}
+.settings-facts dt,.settings-facts dd{color:#444239;font-size:13px;line-height:1.45}
+.settings-health-dot{width:8px;height:8px;flex:none}
+@media(max-width:900px){.settings-calendar-grid,.settings-other-grid{grid-template-columns:1fr}.slack-calendar-card{grid-column:auto}}
+@media(max-width:700px){.portal-settings-heading{align-items:flex-start;flex-direction:column;padding:18px}.portal-settings-heading h1{font-size:25px}.portal-settings-heading p,.settings-group-heading p{font-size:14px}.settings-tabs{width:100%;overflow-x:auto}.settings-tabs button{flex:1;min-width:0;padding:11px 9px;font-size:14px}.settings-card-heading{padding:18px 18px 15px}.settings-card-heading h2,.settings-card-heading h3{font-size:17px}.portal-setting-list{padding:0 17px}.portal-setting-row{grid-template-columns:minmax(0,1fr) 44px;gap:8px 12px;padding:13px 0}.portal-setting-copy strong{font-size:15px}.portal-setting-copy small{font-size:13px}.portal-setting-status{grid-column:1;grid-row:2;justify-self:start;font-size:13px}.portal-setting-control{grid-column:2;grid-row:1/3}.calendar-sender-form,.calendar-reminder-form,.slack-calendar-form{padding-right:18px;padding-left:18px}.settings-tool-links{padding-right:18px;padding-left:18px}.settings-facts{margin-right:18px;margin-left:18px}.settings-data-note{padding:15px 16px}}
