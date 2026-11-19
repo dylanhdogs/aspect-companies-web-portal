@@ -3503,3 +3503,9 @@ body:is(.authenticated,.company-portal-mode) .company-client-searchbar .clients-
 .slack-calendar-card .settings-connection-badge{margin-left:auto}
 @container settings-admin (max-width:1120px){.settings-calendar-grid,.settings-other-grid{grid-template-columns:minmax(0,1fr)}.slack-calendar-card{grid-column:auto}}
 @media(max-width:620px){.calendar-sender-actions .button,.slack-calendar-form .calendar-sender-actions .button{flex:1 1 135px}.calendar-reminder-form .button{width:100%}}
+.settings-admin-layout{gap:22px}
+.settings-group{padding:20px;border:1px solid #e4dece;border-radius:17px;background:#faf8f1}
+.settings-group+.settings-group{border-color:#ded9ca;background:#f4f2eb}
+.settings-group-heading{padding:0 2px 14px;border-bottom:1px solid #e3ddcf}
+.settings-group+.settings-group .settings-group-heading{border-bottom-color:#ded9ca}
+@media(max-width:700px){.settings-group{padding:16px;border-radius:14px}.settings-admin-layout{gap:17px}.settings-group-heading{padding-bottom:12px}}
